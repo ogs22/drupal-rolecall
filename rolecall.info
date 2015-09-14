@@ -1,0 +1,9 @@
+name = Rolecall Add roles from file
+description = Rolecall Add roles from file
+core = 7.x
+package = Owen Smith
+version = 7.x-1
+#configure = admin/config/people/raven
+
+dependencies[] = user
+files[] = rolecall.module
