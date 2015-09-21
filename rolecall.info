@@ -1,7 +1,7 @@
 name = Rolecall Add roles from file
 description = Rolecall Add roles from file
 core = 7.x
-package = Owen Smith
+package = Authentication Roles
 version = 7.x-1
 configure = admin/config/people/rolecall
 

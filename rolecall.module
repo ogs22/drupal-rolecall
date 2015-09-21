@@ -9,13 +9,20 @@ function rolecall_user_login(&$edit, $account, $category = NULL) {
     }
     $rolemap = array (
         /* 	  "role" => "htaccessgroup", */
-        "damtpuser" => "damtpusers"
+        "Raven-damtpusers" => "damtpusers"
     );
 
     // loop thru each role - groupname to see if current user is in it
     foreach ($rolemap as $role => $groupname) {
         //load the role object
-        $roleobj = user_role_load_by_name($role);
+        $roleobj = user_role_load_by_name($role);        
+        if ($roleobj === FALSE) {
+            $type = "Rolecall";
+            $message = "Rolecall Role:". $role ." does not exist";
+            $severity = WATCHDOG_WARNING;        
+            watchdog($type, $message, array(), $severity);
+            break;
+        }
         //check to see if user is in groupfile
         if ( _check_member($account->name,$groupname) !== FALSE) {
             //you are in groupname
